@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../../../GitHub/kitaptakas"
+		},
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"typescript.tsserver.experimental.enableProjectDiagnostics": true
+	}
+}

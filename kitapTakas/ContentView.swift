@@ -8,14 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var authService = AuthService()
+    @StateObject private var bookService = BookService()
+    @StateObject private var tradeService = TradeService()
+    @StateObject private var chatService = ChatService()
+    @StateObject private var ratingService = RatingService()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            if authService.isAuthenticated {
+                MainTabView()
+                    .environmentObject(authService)
+                .environmentObject(bookService)
+                .environmentObject(tradeService)
+                .environmentObject(chatService)
+                .environmentObject(ratingService)
+            } else {
+                AuthView()
+                    .environmentObject(authService)
+                .environmentObject(bookService)
+                .environmentObject(tradeService)
+                .environmentObject(chatService)
+                .environmentObject(ratingService)
         }
-        .padding()
     }
 }
 
